@@ -1,7 +1,8 @@
+import { DataTypes } from 'sequelize';
 import sequelize from "../config/database";
-const { DataTypes } = require('sequelize');
+import InformeFinanciero from '../class/informesFinancierosClass';
 
-const InformeFinanciero = sequelize.define('InformeFinanciero', {
+InformeFinanciero.init({
   id_informe: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -45,6 +46,7 @@ const InformeFinanciero = sequelize.define('InformeFinanciero', {
     allowNull: true
   }
 }, {
+  sequelize,
   tableName: 'informes_financieros',
   indexes: [
     {
@@ -57,4 +59,4 @@ const InformeFinanciero = sequelize.define('InformeFinanciero', {
   timestamps: false
 });
 
-module.exports = InformeFinanciero;
+export default InformeFinanciero;

@@ -1,7 +1,9 @@
+import { DataTypes } from "sequelize";
 import sequelize from "../config/database";
-const { Model, DataTypes } = require('sequelize');
+import Categoria from "../class/categoriaClass";
 
-const Categoria = sequelize.define('Categoria', {
+// Inicialización del modelo
+Categoria.init({
   id_categoria: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -26,6 +28,7 @@ const Categoria = sequelize.define('Categoria', {
     allowNull: false
   }
 }, {
+  sequelize,
   tableName: 'categorias',
   indexes: [
     {
@@ -38,4 +41,4 @@ const Categoria = sequelize.define('Categoria', {
   timestamps: false
 });
 
-module.exports = Categoria;
+export default Categoria;

@@ -1,7 +1,8 @@
+import { DataTypes } from 'sequelize';
 import sequelize from "../config/database";
-const { DataTypes } = require('sequelize');
+import UsuarioClass from "../class/usuarioClass";
 
-const Usuario = sequelize.define('Usuario', {
+UsuarioClass.init({
   id_usuario: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -42,6 +43,7 @@ const Usuario = sequelize.define('Usuario', {
     defaultValue: 'Activo'
   }
 }, {
+  sequelize,
   tableName: 'usuarios',
   indexes: [
     {
@@ -55,4 +57,4 @@ const Usuario = sequelize.define('Usuario', {
   timestamps: false
 });
 
-module.exports = Usuario;
+export default UsuarioClass;

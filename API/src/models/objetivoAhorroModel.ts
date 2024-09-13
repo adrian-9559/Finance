@@ -1,7 +1,8 @@
+import { DataTypes } from 'sequelize';
 import sequelize from "../config/database";
-const { DataTypes } = require('sequelize');
+import ObjetivoAhorro from '../class/objetivoAhorroClass';
 
-const ObjetivoAhorro = sequelize.define('ObjetivoAhorro', {
+ObjetivoAhorro.init({
   id_objetivo_ahorro: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -37,6 +38,7 @@ const ObjetivoAhorro = sequelize.define('ObjetivoAhorro', {
     allowNull: false
   }
 }, {
+  sequelize,
   tableName: 'objetivos_ahorro',
   indexes: [
     {
@@ -49,4 +51,4 @@ const ObjetivoAhorro = sequelize.define('ObjetivoAhorro', {
   timestamps: false
 });
 
-module.exports = ObjetivoAhorro;
+export default ObjetivoAhorro;

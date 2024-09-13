@@ -1,7 +1,8 @@
+import { DataTypes } from 'sequelize';
 import sequelize from "../config/database";
-const { DataTypes } = require('sequelize');
+import Transaccion from '../class/transaccionesClass';
 
-const Transaccion = sequelize.define('Transaccion', {
+Transaccion.init({
   id_transaccion: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -24,10 +25,6 @@ const Transaccion = sequelize.define('Transaccion', {
       key: 'id_categoria'
     }
   },
-  tipo_transaccion: {
-    type: DataTypes.ENUM('Ingreso', 'Gasto'),
-    allowNull: false
-  },
   monto: {
     type: DataTypes.DECIMAL(15, 2),
     allowNull: false
@@ -49,6 +46,7 @@ const Transaccion = sequelize.define('Transaccion', {
     defaultValue: false
   }
 }, {
+  sequelize,
   tableName: 'transacciones',
   indexes: [
     {
@@ -64,4 +62,4 @@ const Transaccion = sequelize.define('Transaccion', {
   timestamps: false 
 });
 
-module.exports = Transaccion;
+export default Transaccion;

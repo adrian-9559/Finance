@@ -1,11 +1,19 @@
-import Express from "express";
-import Router from "./routes";
-import Sequelize from "./config/database";
+import express from 'express';
+import Router from './routes';  // Asegúrate de que este path es correcto
+import Sequelize from './config/database';
 
-const app = Express();
+const app = express();
 
-app.use(Express.json());
+// Middleware para parsear el cuerpo de las solicitudes
+app.use(express.json());
 
+// Middleware de logging
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
+
+// Usa las rutas definidas en routes.js
 app.use("/", Router);
 
 // Conectar a la base de datos

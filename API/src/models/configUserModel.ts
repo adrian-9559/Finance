@@ -1,7 +1,8 @@
+import { DataTypes } from 'sequelize';
 import sequelize from "../config/database";
-const { DataTypes } = require('sequelize');
+import ConfiguracionUsuario from '../class/configUserClass';
 
-const ConfiguracionUsuario = sequelize.define('ConfiguracionUsuario', {
+ConfiguracionUsuario.init({
   id_configuracion: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -33,6 +34,7 @@ const ConfiguracionUsuario = sequelize.define('ConfiguracionUsuario', {
     defaultValue: 'Mensual'
   }
 }, {
+  sequelize,
   tableName: 'configuracion_usuario',
   indexes: [
     {
@@ -42,4 +44,4 @@ const ConfiguracionUsuario = sequelize.define('ConfiguracionUsuario', {
   timestamps: false
 });
 
-module.exports = ConfiguracionUsuario;
+export default ConfiguracionUsuario;
